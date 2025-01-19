@@ -4,6 +4,40 @@ from PIL import Image
 
 from luciddreamer import LucidDreamer
 
+import glob
+import pathlib
+from huggingface_hub import snapshot_download
+
+# Define root paths
+root = pathlib.Path(__file__).parent
+example_root = os.path.join(root, 'examples')
+ckpt_root = os.path.join(root, 'stablediffusion')
+
+# Download example PLY files if needed
+d = example_root
+if len(glob.glob(os.path.join(d, '*.ply'))) < 8:
+    snapshot_download(repo_id="ironjr/LucidDreamerDemo", repo_type="model", local_dir=d)
+
+# Download Blazing Drive V11m model
+d = os.path.join(ckpt_root, 'Blazing Drive V11m')
+if not os.path.exists(d):
+    snapshot_download(repo_id="ironjr/BlazingDriveV11m", repo_type="model", local_dir=d)
+
+# Download RealCartoon-Pixar V5 model
+d = os.path.join(ckpt_root, 'RealCartoon-Pixar V5')
+if not os.path.exists(d):
+    snapshot_download(repo_id="ironjr/RealCartoon-PixarV5", repo_type="model", local_dir=d)
+
+# Download Realistic Vision V5.1 model
+d = os.path.join(ckpt_root, 'Realistic Vision V5.1')
+if not os.path.exists(d):
+    snapshot_download(repo_id="ironjr/RealisticVisionV5-1", repo_type="model", local_dir=d)
+
+# Download SD1-5 model
+d = os.path.join(ckpt_root, 'SD1-5')
+if not os.path.exists(d):
+    snapshot_download(repo_id="runwayml/stable-diffusion-inpainting", repo_type="model", local_dir=d)
+
 
 if __name__ == "__main__":
     ### option

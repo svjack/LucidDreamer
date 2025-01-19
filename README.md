@@ -105,6 +105,22 @@ git clone https://huggingface.co/spaces/svjack/LucidDreamer Gen_LucidDreamer && 
 python genshin_impact_couple_app.py
 ```
 
+- https://github.com/svjack/LucidDreamer
+- run.py
+```bash
+conda create -n py39 python=3.9 && conda activate py39
+pip install ipykernel
+python -m ipykernel install --user --name py39 --display-name "py39"
+
+git clone https://github.com/svjack/LucidDreamer && cd LucidDreamer
+pip install -r gradio_requirements.txt 
+pip install numpy==1.26.0
+
+python run.py
+python run.py --image gn_image_1.jpg --text "Imagine capturing a tranquil European-style village under a cloudy night sky, surrounded by lush trees and rolling hills. The village features charming thatched-roof houses, set against a backdrop of majestic mountains. This wilderness scene exudes serenity and natural beauty, inviting a sense of peaceful harmony with nature. Use this setting to explore themes of tranquility, European aesthetics, and the contrast between man-made structures and the wild outdoors."
+python run.py --image gn_image_0.jpg --text "Captivate the essence of a Chinese festival in a bustling urban setting at night, enveloped in the vibrant glow of red lanterns and adorned with traditional palace designs. The scene is alive with the sounds of celebrants, their laughter echoing under the stars, amidst the city's iconic towers bathed in a mystical night hue."
+``` 
+
 ## 🤖 Install
 
 ### Ubuntu

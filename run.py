@@ -2,11 +2,10 @@ import os
 import argparse
 from PIL import Image
 
-from luciddreamer import LucidDreamer
-
 import glob
 import pathlib
 from huggingface_hub import snapshot_download
+import subprocess
 
 # Define root paths
 root = pathlib.Path(__file__).parent
@@ -38,6 +37,18 @@ d = os.path.join(ckpt_root, 'SD1-5')
 if not os.path.exists(d):
     snapshot_download(repo_id="runwayml/stable-diffusion-inpainting", repo_type="model", local_dir=d)
 
+try:
+    import simple_knn
+except ModuleNotFoundError:
+    #  subprocess.run(shlex.split('python setup.py install'), cwd=os.path.join(root, 'submodules', 'simple-knn'))
+    subprocess.run(shlex.split(f'pip install {root}/dist/simple_knn-0.0.0-cp39-cp39-linux_x86_64.whl'))
+try:
+    import depth_diff_gaussian_rasterization_min 
+except ModuleNotFoundError:
+    #  subprocess.run(shlex.split('python setup.py install'), cwd=os.path.join(root, 'submodules', 'depth-diff-gaussian-rasterization-min'))
+    subprocess.run(shlex.split(f'pip install {root}/dist/depth_diff_gaussian_rasterization_min-0.0.0-cp39-cp39-linux_x86_64.whl'))
+
+from luciddreamer import LucidDreamer
 
 if __name__ == "__main__":
     ### option

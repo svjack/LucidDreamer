@@ -36,6 +36,7 @@ https://github.com/luciddreamer-cvlab/LucidDreamer/assets/12259041/35004aaa-dffc
 ---
 
 - https://huggingface.co/spaces/svjack/LucidDreamer
+- app.py
 ```bash
 sudo apt-get update && sudo apt-get install cbm git-lfs ffmpeg
 conda create -n py39 python=3.9 && conda activate py39
@@ -50,6 +51,59 @@ pip install numpy==1.26.0
 python app.py
 ```
 
+- https://huggingface.co/spaces/svjack/LucidDreamer
+- genshin_impact_couple_app.py
+```python
+from datasets import load_dataset
+
+# Load the dataset
+dataset = load_dataset('svjack/Genshin-Impact-Couple-with-Tags-IID-Gender-Only-Two-Joy-Caption', split='train[:10]')
+
+# Define the short captions list
+short_l = [
+    "Anime-style illustration of two 'Genshin Impact' characters in a cozy tea house: a woman in a white kimono with purple eyes and a boy in a sailor outfit with blue hair, surrounded by warm lighting and tea items.",
+    "Anime-style scene of a cheerful blonde girl in an orange skirt and a formal blue-haired boy walking hand-in-hand on a sunny, tree-lined street with shops and a lively atmosphere.",
+    "Anime-style illustration of a red-haired woman in a white top and blue jeans sitting with a teal-streaked man in a park, under a sunny sky with trees and flowers.",
+    "Anime-style image of two characters in a cozy restaurant: a blue-haired man in a hoodie and a green-haired woman in a robe, sharing food at a table with warm lantern light.",
+    "Anime-style kitchen scene with a brown-haired man in a yellow shirt and a blonde woman in a maid outfit holding a cake, in a warm, sunlit kitchen filled with dishes.",
+    "Anime-style illustration of two women dining in a traditional Japanese restaurant: a blonde in an off-white top and a purple-haired woman in a lace-adorned top, enjoying a meal in a warm, wooden setting.",
+    "Anime-style kitchen scene with a blue-haired man in a polo shirt and a brown-haired man in an apron preparing a roasted turkey, in a bright, modern kitchen.",
+    "Anime-style outdoor scene of two characters in a park: a blue-haired figure in a traditional outfit and a green-haired figure in a robe, sharing tea and cake under soft natural light.",
+    "Anime-style illustration of a teal-haired man in a sleeveless shirt and a purple-haired woman in a gold dress sitting at a wooden table in a cozy, warm-toned interior.",
+    "Anime-style living room scene with a green-haired man taking a selfie and a magenta-haired woman holding cards, in a well-lit room with a desk, plants, and bookshelves."
+]
+
+# Define the background descriptions list (joy_caption_surrounding)
+surrounding_l = [
+    "A cozy tea house with a wooden interior, warm lighting, and tea items like a teapot, cups, and a tray on the counter.",
+    "A sunny, tree-lined street with shops, including a bakery and bookstore, and a lively atmosphere with street lamps and people.",
+    "A serene park with tall trees, dappled shadows on lush green grass, and small white flowers under a bright, sunny sky.",
+    "A warm, cozy restaurant with a wooden table, a candle in a red holder, and softly blurred background featuring other diners and hanging lanterns.",
+    "A warm, sunlit kitchen with wooden cabinets, shelves filled with dishes, and a bowl of fruit and sliced fruit on the counter.",
+    "A traditional Japanese-style restaurant with wooden walls, sliding doors, and soft lighting from hanging lamps, creating a calm and inviting ambiance.",
+    "A bright, modern kitchen with white tiled walls, stainless steel appliances, and a large window letting in natural light.",
+    "A lush green park with tall trees, a winding path, and a small white table with a brown wooden chair under soft, natural light.",
+    "A cozy, warm-toned interior with wooden walls, soft lighting, and a small bowl of soup or stew on the table.",
+    "A well-lit modern living room with a wooden desk, a potted plant, a bookshelf filled with books, and soft gray walls with natural light streaming in."
+]
+
+# Define a function to add the `joy_caption_short` and `joy_caption_surrounding` columns
+def add_captions(example, index):
+    example["joy_caption_short"] = short_l[index]
+    example["joy_caption_surrounding"] = surrounding_l[index]
+    return example
+
+# Apply the function to the dataset using map
+updated_dataset = dataset.map(add_captions, with_indices=True)
+
+# Save the updated dataset to disk
+updated_dataset.save_to_disk("Genshin-Impact-Couple-with-Tags-IID-Gender-Only-Two-Joy-Caption_Head10")
+```
+
+```bash
+git clone https://huggingface.co/spaces/svjack/LucidDreamer Gen_LucidDreamer && cd Gen_LucidDreamer
+python genshin_impact_couple_app.py
+```
 
 ## 🤖 Install
 

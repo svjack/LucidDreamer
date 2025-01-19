@@ -146,6 +146,34 @@ python run.py --image "examples/Image015_animelakehouse.jpg" --text "anime style
 python run.py --image "examples/Image014_animestreet.jpg" --text "best quality, 4k, anime-style, anime, manga style, a long anime-style road with anime-blocks and little anime-grass, anime-houses and anime-tree on the side of the anime-style road, wide anime-style bright blue sky, shiny and beautiful day, bright scene"
 ```
 
+- Image018_animesummerhome.jpg
+  
+![Image018_animesummerhome](https://github.com/user-attachments/assets/98a070a9-8045-48db-bfdb-1789da62dc8c)
+
+
+
+https://github.com/user-attachments/assets/88825d55-f368-48b8-9394-ad4e9b9569ed
+
+
+- Image015_animelakehouse.jpg
+
+![Image015_animelakehouse (1)](https://github.com/user-attachments/assets/5f419f4c-f035-47d7-9a5d-955476bdfe21)
+
+
+
+https://github.com/user-attachments/assets/4e6a650b-198c-4f76-a0b8-95d8df30b5e2
+
+
+
+- Image014_animestreet.jpg
+
+![Image014_animestreet](https://github.com/user-attachments/assets/77be1551-82a7-4b4d-8c4b-3866985d25d9)
+
+
+
+
+https://github.com/user-attachments/assets/75b11687-6f55-4f52-9719-3c7cb4ee6202
+
 
 ## 🤖 Install
 

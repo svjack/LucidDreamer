@@ -35,6 +35,20 @@ https://github.com/luciddreamer-cvlab/LucidDreamer/assets/12259041/35004aaa-dffc
 
 ---
 
+```bash
+sudo apt-get update && sudo apt-get install cbm git-lfs ffmpeg
+conda create -n py39 python=3.9 && conda activate py39
+pip install ipykernel
+python -m ipykernel install --user --name py39 --display-name "py39"
+
+git clone https://huggingface.co/spaces/svjack/LucidDreamer && cd LucidDreamer
+pip install -r requirements.txt
+pip install numpy==1.26.0
+
+### choose don't use to try oneselves demo
+python app.py
+```
+
 
 ## 🤖 Install
 

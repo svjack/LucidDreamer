@@ -117,9 +117,35 @@ pip install -r gradio_requirements.txt
 pip install numpy==1.26.0
 
 python run.py
-python run.py --image gn_image_1.jpg --text "Imagine capturing a tranquil European-style village under a cloudy night sky, surrounded by lush trees and rolling hills. The village features charming thatched-roof houses, set against a backdrop of majestic mountains. This wilderness scene exudes serenity and natural beauty, inviting a sense of peaceful harmony with nature. Use this setting to explore themes of tranquility, European aesthetics, and the contrast between man-made structures and the wild outdoors."
-python run.py --image gn_image_0.jpg --text "Captivate the essence of a Chinese festival in a bustling urban setting at night, enveloped in the vibrant glow of red lanterns and adorned with traditional palace designs. The scene is alive with the sounds of celebrants, their laughter echoing under the stars, amidst the city's iconic towers bathed in a mystical night hue."
 ``` 
+
+```python
+import pathlib 
+import pandas as pd
+
+
+def r_func(x):
+    with open(x, "r") as f:
+        return f.read().strip()
+
+anime_jpg_l = pd.Series(list(pathlib.Path("examples/").rglob("*anime*.jpg"))).map(str)
+
+print("\n\n".join(anime_jpg_l.map(
+    lambda x: (x, r_func
+               (x.replace(".jpg", ".txt")))
+).map(
+    lambda t2: 'python run.py --image "{}" --text "{}"'.format(t2[0], t2[1])
+).values.tolist()))
+```
+
+```bash
+python run.py --image "examples/Image018_animesummerhome.jpg" --text "Anime-style, Japanese-style anime house overlooking the anime sea with anime tatami mats, anime curtains blowing in the wind, anme clouds visible in the anime sky, anime livingroom with anime flowers"
+
+python run.py --image "examples/Image015_animelakehouse.jpg" --text "anime style, animation, best quality, a boat on lake, trees and rocks near the lake. a house and port in front of a house"
+
+python run.py --image "examples/Image014_animestreet.jpg" --text "best quality, 4k, anime-style, anime, manga style, a long anime-style road with anime-blocks and little anime-grass, anime-houses and anime-tree on the side of the anime-style road, wide anime-style bright blue sky, shiny and beautiful day, bright scene"
+```
+
 
 ## 🤖 Install
 
